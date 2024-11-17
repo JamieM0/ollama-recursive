@@ -6,7 +6,7 @@ import java.net.http.HttpResponse;
 import java.net.URI;
 
 public class OllamaAPI {
-    private static final String OPENAI_API_URL = "http://localhost:11434/v1/chat/completions";
+    private static final String OLLAMA_API_URL = "http://localhost:11434/v1/chat/completions";
     private final String apiKey;
     private final HttpClient client;
     private String model;
@@ -31,7 +31,7 @@ public class OllamaAPI {
         //System.out.println(new JSONObject(requestBody).toString(2));
 
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(OPENAI_API_URL))
+                .uri(URI.create(OLLAMA_API_URL))
                 .header("Content-Type", "application/json")
                 .header("Authorization", "Bearer " + apiKey)
                 .POST(HttpRequest.BodyPublishers.ofString(requestBody))
