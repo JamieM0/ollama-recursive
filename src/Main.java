@@ -3,12 +3,16 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Main {
     public static final int LOOPS = 5; //Number of times that the LLM will be prompted.
     public static String systemPrompt = "You are a friendly AI helper. Assist the user in the best way possible.";
     public static String query = "Give me a list of potential genres that a story could have. These could be for any audience of any demographic.";
-    public static String storageLocation = "~/Documents/Ollama Results"; //Change to empty directory where the outputs will be stored.
+    public static LocalDateTime now = LocalDateTime.now();
+    public static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm");
+    public static String storageLocation = "~/Results/" + now.format(formatter); //Change to empty directory where the outputs will be stored.
 
     public static void main(String[] args) {
         recursivelyPrompt();
